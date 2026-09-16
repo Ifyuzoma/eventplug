@@ -3,16 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import { sx } from '../lib/sx';
 import { Logo } from '../components/Logo';
 import { Icon } from '../components/Icon';
-import { MobileTabBar } from '../components/MobileTabBar';
+import { useTabBarHidden } from '../components/TabBarContext';
 import { threads, messages, docs } from '../data/content';
 
 export default function Inbox() {
   const navigate = useNavigate();
   const [activeIdx, setActiveIdx] = useState(0);
   const [mobileView, setMobileView] = useState<'list' | 'chat'>('list');
+  useTabBarHidden(mobileView === 'chat');
 
   return (
-    <div className="ep-page ep-mobile-tabbar-space">
+    <div className={`ep-page${mobileView === 'list' ? ' ep-mobile-tabbar-space' : ''}`}>
       <div className="ep-desktop-only">
         <header style={sx('display:flex;align-items:center;gap:28px;padding:26px 56px;border-bottom:1px solid #EFEAE2')}>
           <Logo height={20} />
@@ -204,7 +205,6 @@ export default function Inbox() {
           </div>
         )}
       </div>
-      {mobileView === 'list' && <MobileTabBar />}
     </div>
   );
 }

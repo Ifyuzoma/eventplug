@@ -206,27 +206,50 @@ a:hover {
     gap: 0 !important;
     padding: 4px 20px 96px !important;
   }
-}
+  .ep-feat-img {
+    height: 220px !important;
+  }
+  .ep-feat-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+  .ep-feat-title {
+    font-size: 24px !important;
+  }
+  .ep-feat-row {
+    gap: 12px !important;
+  }
+  .ep-feat-thumb {
+    width: 72px !important;
+    height: 58px !important;
+  }
 
-.ep-tabbar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 40;
-  display: flex;
-  background: #ffffff;
-  border-top: 1px solid #efeae2;
-  padding-bottom: env(safe-area-inset-bottom, 0);
-}
+  /* Scoped inside the mobile breakpoint (rather than a top-level rule) so it
+     can never win a display:flex-vs-none tie against .ep-mobile-only at
+     desktop widths — a top-level rule here previously left the bar visible
+     on desktop regardless of viewport, since same-specificity rules resolve
+     by source order, not by which one "sounds" more specific. */
+  .ep-tabbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    display: flex;
+    background: #ffffff;
+    border-top: 1px solid #efeae2;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
 
-.ep-tabbar a {
-  flex: 1;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
+  .ep-tabbar a {
+    flex: 1;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
 }
 
 .ep-chip {

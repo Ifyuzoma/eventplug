@@ -4,7 +4,6 @@ import { sx } from '../lib/sx';
 import { Logo } from '../components/Logo';
 import { Icon } from '../components/Icon';
 import { Checkbox } from '../components/Checkbox';
-import { MobileTabBar } from '../components/MobileTabBar';
 import { photos } from '../data/photos';
 import { settingsNav, notifRows } from '../data/content';
 
@@ -99,7 +98,6 @@ export default function Settings() {
           </div>
         </main>
       </div>
-      <MobileTabBar />
     </div>
   );
 }

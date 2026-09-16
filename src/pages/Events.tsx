@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import { sx } from '../lib/sx';
 import { Logo } from '../components/Logo';
 import { Icon } from '../components/Icon';
-import { MobileTabBar } from '../components/MobileTabBar';
 import { myEvents, mobEvents, roster, tasks, docs } from '../data/content';
 
 export default function Events() {
@@ -154,7 +153,6 @@ export default function Events() {
           </div>
         </main>
       </div>
-      <MobileTabBar />
     </div>
   );
 }

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { sx } from '../lib/sx';
 import { Icon } from '../components/Icon';
 import { Logo } from '../components/Logo';
-import { MobileTabBar } from '../components/MobileTabBar';
 import { photos } from '../data/photos';
 import { categories, carouselSlides, carouselTabs, featured, vendorStats, reviews, footerCols } from '../data/content';
 
@@ -225,11 +224,11 @@ export default function Home() {
         </div>
         <div className="ep-split" style={sx('display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:44px;padding-top:34px')}>
           <button onClick={() => navigate('/vendor')} className="ep-link-plain" style={sx('display:block;text-align:left')}>
-            <img src={photos.takashiYamada} alt="Featured vendor" style={sx('width:100%;height:430px;object-fit:cover;border-radius:16px;display:block')} />
-            <div style={sx('display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-top:20px')}>
-              <div>
+            <img src={photos.takashiYamada} alt="Featured vendor" className="ep-feat-img" style={sx('width:100%;height:430px;object-fit:cover;border-radius:16px;display:block')} />
+            <div className="ep-feat-card" style={sx('display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-top:20px')}>
+              <div style={sx('min-width:0')}>
                 <div style={sx('font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#5D6D78')}>Catering · Etobicoke</div>
-                <h3 style={sx("margin:8px 0 0;font-family:'Manrope',sans-serif;font-size:32px;letter-spacing:-0.035em;font-weight:800")}>Fern &amp; Fig Catering</h3>
+                <h3 className="ep-feat-title" style={sx("margin:8px 0 0;font-family:'Manrope',sans-serif;font-size:32px;letter-spacing:-0.035em;font-weight:800")}>Fern &amp; Fig Catering</h3>
                 <p style={sx('margin:8px 0 0;max-width:420px;font-size:14.5px;line-height:1.6;color:#5A6A75')}>Seasonal Ontario menus, plated or family-style, for 40–300 guests. Two chefs on site.</p>
               </div>
               <div style={sx('text-align:right;flex:none')}>
@@ -240,12 +239,12 @@ export default function Home() {
           </button>
           <div>
             {featured.map((v) => (
-              <button key={v.name} onClick={() => navigate('/vendor')} className="ep-link-plain ep-hover-row" style={sx('display:flex;gap:18px;width:100%;padding:18px 0;border-bottom:1px solid #F1ECE4;text-align:left')}>
-                <img src={v.src} alt="" style={sx('width:96px;height:76px;flex:none;object-fit:cover;border-radius:12px;display:block')} />
+              <button key={v.name} onClick={() => navigate('/vendor')} className="ep-link-plain ep-hover-row ep-feat-row" style={sx('display:flex;gap:18px;width:100%;padding:18px 0;border-bottom:1px solid #F1ECE4;text-align:left')}>
+                <img src={v.src} alt="" className="ep-feat-thumb" style={sx('width:96px;height:76px;flex:none;object-fit:cover;border-radius:12px;display:block')} />
                 <div style={sx('flex:1;min-width:0')}>
-                  <div style={sx('font-size:10.5px;font-weight:800;letter-spacing:0.11em;text-transform:uppercase;color:#5D6D78')}>{v.cat}</div>
-                  <div style={sx('margin-top:5px;font-size:17px;font-weight:800;letter-spacing:-0.02em')}>{v.name}</div>
-                  <div style={sx('margin-top:3px;font-size:13px;color:#5D6D78')}>{v.meta}</div>
+                  <div style={sx('font-size:10.5px;font-weight:800;letter-spacing:0.11em;text-transform:uppercase;color:#5D6D78;white-space:nowrap;overflow:hidden;text-overflow:ellipsis')}>{v.cat}</div>
+                  <div style={sx('margin-top:5px;font-size:17px;font-weight:800;letter-spacing:-0.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis')}>{v.name}</div>
+                  <div style={sx('margin-top:3px;font-size:13px;color:#5D6D78;white-space:nowrap;overflow:hidden;text-overflow:ellipsis')}>{v.meta}</div>
                 </div>
                 <div style={sx('flex:none;text-align:right')}>
                   <div style={sx('font-size:15px;font-weight:800')}>{v.price}</div>
@@ -328,7 +327,6 @@ export default function Home() {
           <span style={sx('flex:1')} /><span>Toronto · Ottawa · Hamilton · London</span>
         </div>
       </footer>
-      <MobileTabBar />
     </div>
   );
 }
