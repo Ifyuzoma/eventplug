@@ -219,7 +219,7 @@ export default function Home() {
 
       <section style={sx('padding:96px 56px 100px')}>
         <div style={sx('display:flex;align-items:baseline;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid #EBE6DE')}>
-          <h2 style={sx("margin:0;font-family:'Manrope',sans-serif;font-size:34px;letter-spacing:-0.035em;font-weight:800")}>Booked most this month</h2>
+          <h2 style={sx("margin:0;font-family:'Manrope',sans-serif;font-size:34px;line-height:1.05;letter-spacing:-0.035em;font-weight:800")}>Booked most this month</h2>
           <span style={sx('font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#5D6D78')}>Greater Toronto Area</span>
         </div>
         <div className="ep-split" style={sx('display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:44px;padding-top:34px')}>
