@@ -147,7 +147,7 @@ export default function Home() {
           <button onClick={() => navigate('/search')} className="ep-btn-primary" style={sx('display:flex;align-items:center;justify-content:center;gap:9px;width:100%;height:52px;margin-top:10px;font-size:15.5px')}>
             <Icon name="search" size={17} strokeWidth={1.7} />Search 1,248 vendors
           </button>
-          <div style={sx('display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;font-weight:600;color:#5D6D78')}>
+          <div style={sx('display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;font-size:12px;font-weight:600;color:#5D6D78;text-align:center')}>
             <Icon name="lock" size={14} strokeWidth={1.7} />Deposit held until 48 hours after your event
           </div>
         </div>
@@ -157,7 +157,7 @@ export default function Home() {
           <button
             onClick={() => navigate('/vendor')}
             className="ep-link-plain"
-            style={sx('display:flex;align-items:center;gap:12px;width:100%;margin:-32px 12px 0;position:relative;z-index:2;background:#FFFFFF;border:1px solid #16212B;border-radius:18px;padding:13px 15px;text-align:left')}
+            style={sx('display:flex;align-items:center;gap:12px;width:100%;margin:-32px 0 0;position:relative;z-index:2;background:#FFFFFF;border:1px solid #16212B;border-radius:18px;padding:13px 15px;text-align:left')}
           >
             <span style={sx('width:40px;height:40px;flex:none;border-radius:50%;background:#16212B;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800')}>F&amp;F</span>
             <span style={sx('flex:1;min-width:0')}>
