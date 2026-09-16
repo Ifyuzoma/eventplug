@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { sx } from '../lib/sx';
 import { Icon } from '../components/Icon';
 import { Logo } from '../components/Logo';
+import { StarRow } from '../components/StarRow';
 import { photos } from '../data/photos';
-import { categories, carouselSlides, carouselTabs, featured, vendorStats, reviews, footerCols } from '../data/content';
+import { categories, carouselSlides, carouselTabs, featured, vendorStats, reviews, footerCols, mhCats, mhVendors, mhSteps, mhRev } from '../data/content';
 
 const DWELL = 5200;
-const MOBILE_CHIPS = ['Venues', 'Catering', 'DJs', 'Decor'];
 
 export default function Home() {
   const navigate = useNavigate();
@@ -105,57 +105,155 @@ export default function Home() {
       </div>
 
       <div className="ep-mobile-only">
-        <header style={sx('display:flex;align-items:center;justify-content:space-between;padding:14px 20px')}>
+        <header style={sx('display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 18px 14px;background:#FFFFFF;border-bottom:1px solid #F4EFE8')}>
           <Logo height={18} />
-          <button onClick={() => setMenuOpen((v) => !v)} className="ep-link-plain" style={sx('width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid #E3DDD3;border-radius:50%')}>
-            <Icon name="menu" size={18} strokeWidth={1.7} />
-          </button>
+          <span style={sx('display:flex;gap:8px')}>
+            <button className="ep-link-plain" style={sx('width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid #E3DDD3;border-radius:50%;color:#33424E')}>
+              <Icon name="bell" size={19} strokeWidth={1.6} />
+            </button>
+            <button onClick={() => setMenuOpen((v) => !v)} className="ep-link-plain" style={sx('width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid #E3DDD3;border-radius:50%;color:#33424E')}>
+              <Icon name="list" size={19} strokeWidth={1.7} />
+            </button>
+          </span>
         </header>
         {menuOpen && (
-          <div style={sx('display:flex;flex-direction:column;padding:0 20px 16px;gap:2px')}>
+          <div style={sx('display:flex;flex-direction:column;padding:10px 18px;gap:2px;border-bottom:1px solid #F4EFE8')}>
             <button onClick={() => navigate('/auth')} className="ep-link-plain ep-hover-row" style={sx('text-align:left;padding:12px 4px;font-size:15px;font-weight:700;border-radius:10px')}>Log in</button>
             <button className="ep-link-plain ep-hover-row" style={sx('text-align:left;padding:12px 4px;font-size:15px;font-weight:700;border-radius:10px')}>List your business</button>
             <button onClick={() => navigate('/search')} className="ep-link-plain ep-hover-row" style={sx('text-align:left;padding:12px 4px;font-size:15px;font-weight:700;border-radius:10px')}>How it works</button>
           </div>
         )}
-        <div style={sx('padding:8px 20px 0')}>
-          <h1 style={sx("margin:8px 0 0;font-family:'Manrope',sans-serif;font-size:36px;line-height:0.96;letter-spacing:-0.04em;font-weight:800")}>Book the people who make the party.</h1>
-          <div style={sx('margin-top:18px;border:1px solid #16212B;border-radius:16px;overflow:hidden')}>
-            <label style={sx('display:block;padding:11px 14px;border-bottom:1px solid #EBE6DE')}>
-              <span style={sx('display:block;font-size:9.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#5D6D78')}>What</span>
-              <input defaultValue="Wedding catering" style={sx('width:100%;margin-top:2px;border:0;outline:none;padding:0;font-size:14px;font-weight:600')} />
+
+        <div style={sx('padding:22px 18px 0')}>
+          <h2 style={sx("margin:0;font-family:'Manrope',sans-serif;font-size:38px;line-height:0.94;letter-spacing:-0.045em;font-weight:800;text-wrap:balance")}>Book the people who make the party.</h2>
+          <p style={sx('margin:14px 0 0;font-size:14.5px;line-height:1.6;color:#4A5A66')}>Caterers, venues, DJs and decorators with real prices and real open dates.</p>
+
+          <div style={sx('margin-top:20px;border:1px solid #16212B;border-radius:18px;overflow:hidden')}>
+            <label style={sx('display:block;padding:12px 16px;border-bottom:1px solid #EBE6DE')}>
+              <span style={sx('display:block;font-size:9.5px;font-weight:800;letter-spacing:0.11em;text-transform:uppercase;color:#5D6D78')}>What</span>
+              <input defaultValue="Wedding catering" style={sx('width:100%;margin-top:3px;border:0;outline:none;padding:0;font-size:15px;font-weight:600')} />
             </label>
             <div style={sx('display:flex')}>
-              <label style={sx('flex:1;display:block;padding:11px 14px;border-right:1px solid #EBE6DE')}>
-                <span style={sx('display:block;font-size:9.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#5D6D78')}>Where</span>
-                <input defaultValue="Toronto" style={sx('width:100%;margin-top:2px;border:0;outline:none;padding:0;font-size:14px;font-weight:600')} />
+              <label style={sx('flex:1;min-width:0;display:block;padding:12px 16px;border-right:1px solid #EBE6DE')}>
+                <span style={sx('display:block;font-size:9.5px;font-weight:800;letter-spacing:0.11em;text-transform:uppercase;color:#5D6D78')}>Where</span>
+                <input defaultValue="Toronto" style={sx('width:100%;margin-top:3px;border:0;outline:none;padding:0;font-size:15px;font-weight:600')} />
               </label>
-              <label style={sx('flex:1;display:block;padding:11px 14px')}>
-                <span style={sx('display:block;font-size:9.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#5D6D78')}>When</span>
-                <input defaultValue="Jun 20" style={sx('width:100%;margin-top:2px;border:0;outline:none;padding:0;font-size:14px;font-weight:600')} />
+              <label style={sx('flex:1;min-width:0;display:block;padding:12px 16px')}>
+                <span style={sx('display:block;font-size:9.5px;font-weight:800;letter-spacing:0.11em;text-transform:uppercase;color:#5D6D78')}>When</span>
+                <input defaultValue="Sat, Jun 20" style={sx('width:100%;margin-top:3px;border:0;outline:none;padding:0;font-size:15px;font-weight:600')} />
               </label>
             </div>
           </div>
-          <button onClick={() => navigate('/search')} className="ep-btn-primary" style={sx('width:100%;height:48px;margin-top:10px;font-size:15px')}>Search 1,248 vendors</button>
-          <div style={sx('display:flex;gap:8px;margin-top:20px;overflow-x:auto')}>
-            {MOBILE_CHIPS.map((c) => (
-              <span key={c} className={c === 'Catering' ? 'ep-chip ep-chip-on' : 'ep-chip'}>{c}</span>
+          <button onClick={() => navigate('/search')} className="ep-btn-primary" style={sx('display:flex;align-items:center;justify-content:center;gap:9px;width:100%;height:52px;margin-top:10px;font-size:15.5px')}>
+            <Icon name="search" size={17} strokeWidth={1.7} />Search 1,248 vendors
+          </button>
+          <div style={sx('display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;font-weight:600;color:#5D6D78')}>
+            <Icon name="lock" size={14} strokeWidth={1.7} />Deposit held until 48 hours after your event
+          </div>
+        </div>
+
+        <div style={sx('margin-top:26px;padding:0 18px')}>
+          <img src={photos.alElmes} alt="Hero moment" style={sx('width:100%;height:250px;object-fit:cover;border-radius:20px;display:block')} />
+          <button
+            onClick={() => navigate('/vendor')}
+            className="ep-link-plain"
+            style={sx('display:flex;align-items:center;gap:12px;width:100%;margin:-32px 12px 0;position:relative;z-index:2;background:#FFFFFF;border:1px solid #16212B;border-radius:18px;padding:13px 15px;text-align:left')}
+          >
+            <span style={sx('width:40px;height:40px;flex:none;border-radius:50%;background:#16212B;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800')}>F&amp;F</span>
+            <span style={sx('flex:1;min-width:0')}>
+              <span style={sx('display:block;font-size:14.5px;font-weight:800;letter-spacing:-0.015em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis')}>Fern &amp; Fig Catering</span>
+              <span style={sx('display:block;margin-top:3px;font-size:12px;color:#5D6D78')}>Etobicoke · 4.9 (128) · $68 per guest</span>
+            </span>
+            <span style={sx('width:40px;height:40px;flex:none;display:flex;align-items:center;justify-content:center;background:#FF6B6B;color:#FFFFFF;border-radius:50%')}>
+              <Icon name="chevR" size={17} strokeWidth={1.8} />
+            </span>
+          </button>
+        </div>
+
+        <div style={sx('padding:34px 18px 0')}>
+          <div style={sx('display:flex;align-items:baseline;gap:12px')}>
+            <h3 style={sx("margin:0;flex:1;font-family:'Manrope',sans-serif;font-size:24px;letter-spacing:-0.03em;font-weight:800")}>Start with a category</h3>
+            <button onClick={() => navigate('/search')} className="ep-link-plain" style={sx('font-size:12.5px;font-weight:700;color:#5D6D78')}>All 8</button>
+          </div>
+          <div style={sx('display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px')}>
+            {mhCats.map((c) => (
+              <button key={c.name} onClick={() => navigate('/search')} className="ep-link-plain" style={sx('position:relative;display:block;height:104px;padding:0;background:#16212B;border-radius:16px;overflow:hidden;text-align:left')}>
+                <img src={c.img} alt="" style={sx('position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.42;display:block')} />
+                <span style={sx('position:absolute;inset:0;background:linear-gradient(to top, rgba(22,33,43,0.88) 0%, rgba(22,33,43,0.34) 64%, rgba(22,33,43,0.08) 100%)')} />
+                <span style={sx('position:absolute;left:14px;right:14px;bottom:13px;display:block')}>
+                  <span style={sx('display:block;font-size:15px;font-weight:800;color:#FFFFFF;letter-spacing:-0.015em')}>{c.name}</span>
+                  <span style={sx('display:block;margin-top:3px;font-size:11.5px;font-weight:600;color:#FFFFFF')}>{c.count}</span>
+                </span>
+              </button>
             ))}
           </div>
-          <button onClick={() => navigate('/vendor')} className="ep-link-plain" style={sx('display:block;width:100%;text-align:left;margin-top:20px')}>
-            <img src={photos.jayWennington} alt="Featured vendor" style={sx('width:100%;height:170px;object-fit:cover;border-radius:16px;display:block')} />
-            <div style={sx('display:flex;align-items:baseline;justify-content:space-between;margin-top:12px')}>
-              <div>
-                <div style={sx('font-size:16px;font-weight:800;letter-spacing:-0.02em')}>Fern &amp; Fig Catering</div>
-                <div style={sx('margin-top:3px;font-size:12.5px;color:#5D6D78')}>Etobicoke · 4.9 ★ (128)</div>
-              </div>
-              <div style={sx('font-size:16px;font-weight:800')}>$68<span style={sx('font-size:10.5px;font-weight:600;color:#5D6D78')}>/gst</span></div>
+        </div>
+
+        <div style={sx('margin-top:36px;padding:28px 18px;background:#0F5C52;color:#FFFFFF')}>
+          <div style={sx('font-size:10.5px;font-weight:800;letter-spacing:0.13em;text-transform:uppercase;color:#B4DFCB')}>How a booking goes</div>
+          {mhSteps.map((s) => (
+            <div key={s.n} style={sx('display:flex;gap:14px;margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.22)')}>
+              <span style={sx("flex:none;font-family:'Manrope',sans-serif;font-size:14px;font-weight:800;letter-spacing:0.03em;color:#B4DFCB")}>{s.n}</span>
+              <span style={sx('flex:1;min-width:0')}>
+                <span style={sx('display:block;font-size:16.5px;font-weight:800;letter-spacing:-0.02em')}>{s.t}</span>
+                <span style={sx('display:block;margin-top:6px;font-size:13.5px;line-height:1.6;color:#CDE6D9')}>{s.b}</span>
+              </span>
             </div>
-          </button>
+          ))}
+        </div>
+
+        <div style={sx('padding:34px 18px 0')}>
+          <div style={sx('display:flex;align-items:baseline;gap:12px')}>
+            <h3 style={sx("margin:0;flex:1;font-family:'Manrope',sans-serif;font-size:24px;letter-spacing:-0.03em;font-weight:800")}>Free on Jun 20</h3>
+            <button onClick={() => navigate('/search')} className="ep-link-plain" style={sx('font-size:12.5px;font-weight:700;color:#5D6D78')}>See all</button>
+          </div>
+          {mhVendors.map((v) => (
+            <button key={v.name} onClick={() => navigate('/vendor')} className="ep-link-plain" style={sx('display:flex;gap:14px;width:100%;text-align:left;padding:16px 0;border-bottom:1px solid #F1ECE4')}>
+              <img src={v.img} alt="" style={sx('width:96px;height:96px;flex:none;border-radius:14px;object-fit:cover;display:block')} />
+              <span style={sx('flex:1;min-width:0')}>
+                <span style={sx('display:block;font-size:15.5px;font-weight:800;letter-spacing:-0.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis')}>{v.name}</span>
+                <span style={sx('display:block;margin-top:4px;font-size:12.5px;color:#5D6D78')}>{v.meta}</span>
+                <span style={sx('display:flex;align-items:center;gap:7px;margin-top:8px;font-size:11.5px;font-weight:700;color:#0F5C52')}>
+                  <span style={sx('width:6px;height:6px;border-radius:50%;background:#0F5C52')} />{v.open}
+                </span>
+                <span style={sx('display:block;margin-top:8px;font-size:14.5px;font-weight:800')}>{v.price} <span style={sx('font-size:11px;font-weight:600;color:#5D6D78')}>{v.unit}</span></span>
+              </span>
+            </button>
+          ))}
+        </div>
+
+        <div style={sx('margin-top:32px;padding:26px 18px;background:#FEF7F0')}>
+          <StarRow filled={5} size={16} />
+          <p style={sx("margin:16px 0 0;font-family:'Manrope',sans-serif;font-size:21px;line-height:1.3;letter-spacing:-0.025em;font-weight:800;text-wrap:pretty")}>{mhRev.text}</p>
+          <div style={sx('display:flex;align-items:center;gap:12px;margin-top:18px')}>
+            <img src={mhRev.av} alt="" width={38} height={38} style={sx('width:38px;height:38px;flex:none;border-radius:50%;object-fit:cover;display:block')} />
+            <span>
+              <span style={sx('display:block;font-size:13.5px;font-weight:800')}>{mhRev.who}</span>
+              <span style={sx('display:block;margin-top:2px;font-size:12px;color:#5D6D78')}>{mhRev.meta}</span>
+            </span>
+          </div>
+        </div>
+
+        <div style={sx('padding:32px 18px 0')}>
+          <h3 style={sx("margin:0;font-family:'Manrope',sans-serif;font-size:24px;line-height:1.05;letter-spacing:-0.03em;font-weight:800")}>Not sure who you need yet?</h3>
+          <p style={sx('margin:10px 0 0;font-size:14px;line-height:1.6;color:#4A5A66')}>Post the brief once. Vendors who can actually do your date reply with a written quote, usually within a day.</p>
+          <button onClick={() => navigate('/booking')} className="ep-btn-dark" style={sx('width:100%;height:50px;margin-top:16px;font-size:15px')}>Post a brief</button>
+        </div>
+
+        <div style={sx('margin-top:34px;padding:26px 18px 30px;background:#16212B;color:#FFFFFF')}>
+          <div style={sx('font-size:16.5px;font-weight:800;letter-spacing:-0.02em')}>Do you cater, shoot or DJ?</div>
+          <p style={sx('margin:8px 0 0;font-size:13.5px;line-height:1.6;color:#B9C7D0')}>List once, get paid two days after every event. Flat 8% and nothing up front.</p>
+          <button className="ep-link-plain" style={sx('width:100%;height:48px;margin-top:16px;background:#FFFFFF;color:#16212B;border-radius:999px;font-size:14.5px;font-weight:700')}>List your business</button>
+          <div style={sx('display:flex;flex-wrap:wrap;gap:14px;margin-top:24px;padding-top:18px;border-top:1px solid #2A3945;font-size:12.5px;color:#B9C7D0')}>
+            <button className="ep-link-plain" style={{ color: 'inherit' }}>How it works</button>
+            <button className="ep-link-plain" style={{ color: 'inherit' }}>Support</button>
+            <button className="ep-link-plain" style={{ color: 'inherit' }}>Terms</button>
+            <button className="ep-link-plain" style={{ color: 'inherit' }}>Privacy</button>
+          </div>
         </div>
       </div>
 
-      <section className="ep-cat" style={sx('padding:112px 56px 84px;border-top:1px solid #EFEAE2;margin-top:76px')}>
+      <section className="ep-desktop-only" style={sx('padding:112px 56px 84px;border-top:1px solid #EFEAE2;margin-top:76px')}>
         <div style={sx('display:flex;align-items:baseline;justify-content:space-between;padding:0 0 26px')}>
           <span style={sx('font-size:11px;font-weight:800;letter-spacing:0.13em;text-transform:uppercase;color:#5D6D78')}>Browse by category</span>
           <button onClick={() => navigate('/search')} className="ep-link-plain" style={sx('font-size:13px;font-weight:700;border-bottom:1px solid #16212B')}>All 14 categories</button>
@@ -171,7 +269,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} style={sx('padding:96px 0 100px;background:#FEF7F0;border-top:1px solid #EFEAE2;border-bottom:1px solid #EFEAE2')}>
+      <section className="ep-desktop-only" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} style={sx('padding:96px 0 100px;background:#FEF7F0;border-top:1px solid #EFEAE2;border-bottom:1px solid #EFEAE2')}>
         <div className="ep-split" style={sx('display:grid;grid-template-columns:minmax(0,0.62fr) minmax(0,1fr);gap:56px;align-items:start;padding:0 56px')}>
           <div>
             <div style={sx('font-size:11px;font-weight:800;letter-spacing:0.13em;text-transform:uppercase;color:#5D6D78')}>How it works</div>
@@ -217,7 +315,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={sx('padding:96px 56px 100px')}>
+      <section className="ep-desktop-only" style={sx('padding:96px 56px 100px')}>
         <div style={sx('display:flex;align-items:baseline;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid #EBE6DE')}>
           <h2 style={sx("margin:0;font-family:'Manrope',sans-serif;font-size:34px;line-height:1.05;letter-spacing:-0.035em;font-weight:800")}>Booked most this month</h2>
           <span style={sx('font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#5D6D78')}>Greater Toronto Area</span>
@@ -278,7 +376,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="ep-split" style={sx('display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:64px;padding:96px 56px 100px;background:#0F5C52;color:#FFFFFF')}>
+      <section className="ep-desktop-only ep-split" style={sx('display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:64px;padding:96px 56px 100px;background:#0F5C52;color:#FFFFFF')}>
         <div>
           <div style={sx('font-size:11px;font-weight:800;letter-spacing:0.13em;text-transform:uppercase;color:#B4DFCB')}>For vendors</div>
           <h2 style={sx("margin:20px 0 0;font-family:'Manrope',sans-serif;font-size:46px;line-height:1.0;letter-spacing:-0.04em;font-weight:800")}>Get booked.<br />Not ghosted.</h2>
@@ -295,7 +393,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={sx('padding:96px 0 100px;overflow:hidden')}>
+      <section className="ep-desktop-only" style={sx('padding:96px 0 100px;overflow:hidden')}>
         <div style={sx('padding:0 56px;max-width:720px')}>
           <div style={sx('font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#5D6D78')}>What people say</div>
           <h2 style={sx("margin:18px 0 0;font-family:'Manrope',sans-serif;font-size:44px;line-height:1.06;letter-spacing:-0.035em;font-weight:800;text-wrap:pretty")}>Booked, delivered, danced to.</h2>
@@ -318,7 +416,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer style={sx('padding:72px 56px 36px;background:#111E26;color:#93A3AE')}>
+      <footer className="ep-desktop-only" style={sx('padding:72px 56px 36px;background:#111E26;color:#93A3AE')}>
         <div className="ep-4col" style={sx('display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,0.8fr)) minmax(0,1.1fr);gap:44px')}>
           <div>
             <Logo height={23} white />

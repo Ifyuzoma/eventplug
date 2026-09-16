@@ -1,3 +1,4 @@
+import alElmes from '../assets/photos/al-elmes-ULHxWq8reao-unsplash.jpg';
 import alexMunsell from '../assets/photos/alex-munsell-auIbTAcSH6E-unsplash.jpg';
 import alvinMahmudov from '../assets/photos/alvin-mahmudov-NSVJAAXOYHs-unsplash.jpg';
 import anhNguyen from '../assets/photos/anh-nguyen-kcA-c3f_3FE-unsplash.jpg';
@@ -26,6 +27,7 @@ import avGiorgioTrovato from '../assets/avatars/giorgio-trovato.png';
 import avWillianSouza from '../assets/avatars/willian-souza.png';
 
 export const photos = {
+  alElmes,
   alexMunsell,
   alvinMahmudov,
   anhNguyen,

@@ -186,10 +186,6 @@ a:hover {
   .ep-mobile-tabbar-space {
     padding-bottom: 110px;
   }
-  .ep-cat {
-    padding: 56px 20px 48px !important;
-    margin-top: 32px !important;
-  }
   .ep-vendor-h1 {
     font-size: 32px !important;
   }
@@ -206,46 +202,10 @@ a:hover {
     gap: 0 !important;
     padding: 4px 20px 96px !important;
   }
-  .ep-feat-img {
-    height: 220px !important;
-  }
-  .ep-feat-card {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 14px !important;
-    margin-top: 12px !important;
-  }
-  .ep-feat-desc {
-    line-height: 1.5 !important;
-  }
-
-  /* Airbnb-style peek carousel: bleeds to the viewport edge past the
-     section's own side padding (negative margin) so the next card is
-     partially visible, then re-pads internally so cards still align with
-     the page's normal content edge instead of touching it exactly. */
-  .ep-carousel {
-    display: flex;
-    gap: 14px;
-    overflow-x: auto;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    margin: 0 -18px;
-    padding: 0 18px 4px;
-  }
-  .ep-carousel::-webkit-scrollbar {
-    display: none;
-  }
-  .ep-carousel-card {
-    /* Sized off the carousel's own (rendered) width rather than a vw unit,
-       so the peek amount is reliable regardless of viewport quirks — this
-       guarantees ~56px of the next card stays visible at the right edge. */
-    flex: none;
-    width: calc(100% - 56px);
-    max-width: 320px;
-    scroll-snap-align: start;
-    text-align: left;
-  }
+  /* .ep-feat-* and .ep-carousel* (the old "Booked most this month" mobile
+     treatment) are unused at this breakpoint now — that whole section is
+     .ep-desktop-only, superseded on mobile by the mhome "Free on Jun 20"
+     list. Kept as plain classes with no mobile rules; harmless if reused. */
 
   /* Scoped inside the mobile breakpoint (rather than a top-level rule) so it
      can never win a display:flex-vs-none tie against .ep-mobile-only at

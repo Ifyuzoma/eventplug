@@ -1,5 +1,33 @@
 import { photos, avatars } from './photos';
 
+// Mobile home ("mhome" in the design handoff) — a dedicated end-to-end
+// mobile composition, not a restyle of the desktop sections.
+export const mhCats = [
+  { name: 'Catering', count: '186 in Ontario', img: photos.alexMunsell },
+  { name: 'Venues', count: '212 in Ontario', img: photos.alElmes },
+  { name: 'Photography', count: '164 in Ontario', img: photos.eugeniaPan },
+  { name: 'Decor', count: '98 in Ontario', img: photos.jayWennington },
+];
+
+export const mhVendors = [
+  { name: 'Fern & Fig Catering', meta: 'Etobicoke · 4.9 (128)', price: '$68', unit: 'per guest', open: 'Free Jun 20', img: photos.alexMunsell },
+  { name: 'Nine Frames', meta: 'Toronto · 4.8 (74)', price: '$2,400', unit: 'eight hours', open: 'Two dates left', img: photos.eugeniaPan },
+  { name: 'The Glasshouse', meta: 'Mississauga · 4.9 (52)', price: '$4,800', unit: 'venue hire', open: 'Free Jun 20', img: photos.alElmes },
+];
+
+export const mhSteps = [
+  { n: '01', t: 'Say what you need', b: 'Date, guest count, budget. One brief, not eight phone calls.' },
+  { n: '02', t: 'Compare real prices', b: 'Published rates and actual open dates. Instant book or ask for a custom quote.' },
+  { n: '03', t: 'Hold it with a deposit', b: 'We keep the money until 48 hours after your event.' },
+];
+
+export const mhRev = {
+  text: 'We had four quotes back before lunch. Booked the caterer that afternoon and never opened a spreadsheet.',
+  who: 'Claire Whitfield',
+  meta: 'Wedding, 180 guests · Mississauga',
+  av: avatars.christina,
+};
+
 export const categories = [
   { no: '01', name: 'Venues', count: '212' },
   { no: '02', name: 'Catering', count: '186' },
