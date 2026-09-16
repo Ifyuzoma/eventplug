@@ -228,8 +228,8 @@ export default function Home() {
             <div className="ep-feat-card" style={sx('display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-top:20px')}>
               <div style={sx('min-width:0')}>
                 <div style={sx('font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#5D6D78')}>Catering · Etobicoke</div>
-                <h3 className="ep-feat-title" style={sx("margin:8px 0 0;font-family:'Manrope',sans-serif;font-size:32px;letter-spacing:-0.035em;font-weight:800")}>Fern &amp; Fig Catering</h3>
-                <p style={sx('margin:8px 0 0;max-width:420px;font-size:14.5px;line-height:1.6;color:#5A6A75')}>Seasonal Ontario menus, plated or family-style, for 40–300 guests. Two chefs on site.</p>
+                <h3 className="ep-feat-title" style={sx("margin:8px 0 0;font-family:'Manrope',sans-serif;font-size:clamp(20px, 6vw, 32px);line-height:1.1;letter-spacing:-0.035em;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis")}>Fern &amp; Fig Catering</h3>
+                <p className="ep-feat-desc" style={sx('margin:8px 0 0;max-width:420px;font-size:14.5px;line-height:1.6;color:#5A6A75')}>Seasonal Ontario menus, plated or family-style, for 40–300 guests. Two chefs on site.</p>
               </div>
               <div style={sx('text-align:right;flex:none')}>
                 <div style={sx('font-size:22px;font-weight:800')}>$68<span style={sx('font-size:12px;font-weight:600;color:#5D6D78')}>/guest</span></div>
@@ -237,10 +237,11 @@ export default function Home() {
               </div>
             </div>
           </button>
-          <div>
+
+          <div className="ep-desktop-only">
             {featured.map((v) => (
-              <button key={v.name} onClick={() => navigate('/vendor')} className="ep-link-plain ep-hover-row ep-feat-row" style={sx('display:flex;gap:18px;width:100%;padding:18px 0;border-bottom:1px solid #F1ECE4;text-align:left')}>
-                <img src={v.src} alt="" className="ep-feat-thumb" style={sx('width:96px;height:76px;flex:none;object-fit:cover;border-radius:12px;display:block')} />
+              <button key={v.name} onClick={() => navigate('/vendor')} className="ep-link-plain ep-hover-row" style={sx('display:flex;gap:18px;width:100%;padding:18px 0;border-bottom:1px solid #F1ECE4;text-align:left')}>
+                <img src={v.src} alt="" style={sx('width:96px;height:76px;flex:none;object-fit:cover;border-radius:12px;display:block')} />
                 <div style={sx('flex:1;min-width:0')}>
                   <div style={sx('font-size:10.5px;font-weight:800;letter-spacing:0.11em;text-transform:uppercase;color:#5D6D78;white-space:nowrap;overflow:hidden;text-overflow:ellipsis')}>{v.cat}</div>
                   <div style={sx('margin-top:5px;font-size:17px;font-weight:800;letter-spacing:-0.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis')}>{v.name}</div>
@@ -253,6 +254,26 @@ export default function Home() {
               </button>
             ))}
             <button onClick={() => navigate('/search')} className="ep-btn-outline" style={sx('margin-top:22px;padding:12px 22px;font-size:14px')}>See all 1,248 vendors</button>
+          </div>
+
+          {/* Mobile: an Airbnb-style horizontal swipe carousel instead of a
+              cramped vertical list. Bleeds past the section's own side
+              padding (negative margin) so the next card peeks in at the
+              screen edge, signalling there's more to swipe to. */}
+          <div className="ep-mobile-only">
+            <div className="ep-carousel">
+              {featured.map((v) => (
+                <button key={v.name} onClick={() => navigate('/vendor')} className="ep-link-plain ep-carousel-card">
+                  <img src={v.src} alt="" style={sx('width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;display:block')} />
+                  <div style={sx('margin-top:12px;font-size:10.5px;font-weight:800;letter-spacing:0.11em;text-transform:uppercase;color:#5D6D78')}>{v.cat}</div>
+                  <div style={sx('margin-top:5px;font-size:19px;font-weight:800;letter-spacing:-0.02em')}>{v.name}</div>
+                  <div style={sx('margin-top:4px;font-size:14px;line-height:1.5;color:#5D6D78')}>{v.meta}</div>
+                  <div style={sx('margin-top:10px;font-size:18px;font-weight:800')}>{v.price}</div>
+                  <div style={sx('margin-top:2px;font-size:13px;color:#5D6D78')}>{v.rating}</div>
+                </button>
+              ))}
+            </div>
+            <button onClick={() => navigate('/search')} className="ep-btn-outline" style={sx('margin-top:20px;padding:12px 22px;font-size:14px')}>See all 1,248 vendors</button>
           </div>
         </div>
       </section>
